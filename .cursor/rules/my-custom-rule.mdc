@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+commandでq^D^Cを打つのは禁止
+

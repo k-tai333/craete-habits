@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('habit_records', function (Blueprint $table) {
             $table->id();
-            $table->integer('habit_id'); // habit_idカラム
-            $table->string('achivement_level'); // 達成度を表すカラム        
-            $table->date('recorded_date'); // 達成度を表すカラム
+            $table->foreignId('habit_id')
+                ->constrained('habits')
+                ->onDelete('cascade');
+            $table->integer('achievement_level')->comment('1: ○, 2: △, 3: ×');
+            $table->date('date');
             $table->timestamps();
         });
     }
