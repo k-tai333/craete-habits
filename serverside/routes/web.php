@@ -16,7 +16,7 @@ Route::post('/test', function (Request $request) {
 Route::middleware('web')->group(function () {
     Route::post('/auth/login', [UserController::class, 'login']);
     Route::post('/auth/register', [UserController::class, 'store']);
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware('auth:web')->group(function () {
         Route::get('/auth/me', [UserController::class, 'me']);
         Route::post('/auth/logout', [UserController::class, 'logout']);
     });

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Sail is a CLI tool that helps you build Laravel applications using Docker.
+#
+# This file is the entry point for the Sail CLI tool. It provides a simple
+# interface for running common Laravel commands within Docker containers.
+#
+# For more information, visit: https://laravel.com/docs/sail
+
+set -e
+
+# Ensure that Sail is not already running...
+if [ -f ./docker-compose.override.yml ]; then
+    >&2 echo "Sail is already running."
+    >&2 echo ""
+    >&2 echo "Run 'sail down' to stop the running containers."
+    exit 1
+fi
+
+# Define environment variables...
+export APP_PORT="${APP_PORT:-80}"
+export APP_SERVICE="${APP_SERVICE:-laravel.test}"
+export DB_PORT="${DB_PORT:-3306}"
+export WWWUSER="${WWWUSER:-1000}"
+export WWWGROUP="${WWWGROUP:-1000}"
+
+# Allow environment variables to be overridden...
+while getopts "p:" opt; do
+    case $opt in
+        p)
+            export APP_PORT="$OPTARG"
+            ;;
+    esac
+done
+
+# Proxy the "sail" command to docker-compose...
+docker-compose "$@" 

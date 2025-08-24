@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique()->after('name');
-            $table->string('password')->after('email');
+            $table->string('email')->unique();
+            $table->string('password');
             // $table->rememberToken();
             $table->timestamps();
         });

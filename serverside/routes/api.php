@@ -6,7 +6,7 @@ use App\Http\Controllers\HabitController;
 use App\Http\Controllers\UserController;
 
 // 認証が必要なルート
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:web')->group(function () {
   // Habits routes
   Route::post('/habits', [HabitController::class, 'store']);
   Route::get('/habits/detail/{id}', [HabitController::class, 'show']);
