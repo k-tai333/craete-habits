@@ -1,0 +1,41 @@
+# Git関連
+.git
+.gitignore
+
+# 依存関係
+vendor/
+node_modules/
+
+# 環境設定
+.env
+.env.*
+!.env.example
+
+# ログファイル
+storage/logs/*
+!storage/logs/.gitkeep
+
+# キャッシュ
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+!storage/framework/*/.gitkeep
+
+# テスト関連
+tests/
+phpunit.xml
+
+# IDE設定
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# Docker関連
+Dockerfile
+docker-compose.yml
+.dockerignore
